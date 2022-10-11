@@ -48,8 +48,13 @@ dependencies:
   hive_flutter: ^1.1.0
   shared_preferences: ^2.0.15
   flutter_conditional_rendering: ^2.0.0
-  jiffy: ^5.0.0
   google_maps_flutter: ^2.2.1
+  url_launcher: ^6.1.6
+  connectivity_plus: ^2.3.7
+  curved_navigation_bar: ^1.0.3
+  flutter_switch: ^0.3.2
+  carousel_slider: ^4.1.1
+  smooth_page_indicator: ^1.0.0+2
 
 dev_dependencies:
   flutter_test:

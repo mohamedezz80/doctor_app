@@ -9,28 +9,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NotificationCubit extends Cubit<NotificationStates>
 {
-
-
   NotificationCubit() : super (NotificationInitialState());
   static NotificationCubit get(context) => BlocProvider.of<NotificationCubit>(context);
 
-
-// void getNotification()
-// {
-//   emit(NotificationLoadingState());
-//   DioHelper.getData(
-//     url: NOTIFICATIONS,
-//   ).then((value) {
-//     print(value.data);
-//      notificationModel = value.data.map((e)=> NotificationModel.fromJson(e)) ;
-//
-//     emit(NotificationSuccessState());
-//   }).catchError((error){
-//     emit(NotificationErrorState());
-//   });
-// }
-
-  List<NotificationModel> notificationModel = <NotificationModel>[] ;
+  List<NotificationModel> notificationModel = <NotificationModel>[];
   var dio = Dio();
   Future<List<NotificationModel>?> getNotifications() async
   {

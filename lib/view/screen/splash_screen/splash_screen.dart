@@ -1,13 +1,12 @@
 import 'dart:async';
 import 'package:doctor_app/core/const/color.dart';
-import 'package:doctor_app/core/const/token.dart';
+import 'package:doctor_app/core/const/image_asset.dart';
 import 'package:doctor_app/main.dart';
 import 'package:doctor_app/view/widget/auth/is_logined.dart';
 import 'package:doctor_app/view/widget/navigate_finish.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:http/http.dart' as http;
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({
@@ -25,7 +24,7 @@ class _SplashScreenState extends State<SplashScreen> {
     notificationInit();
     Timer(
         const Duration(
-          seconds: 3,
+          seconds: 5,
         ), () {
       navigateAndFinish(context, const IsLogined());
     });
@@ -79,41 +78,27 @@ class _SplashScreenState extends State<SplashScreen> {
     });
   }
 
-  // String? token = await FirebaseMessaging.instance.getToken();
-
-  // postData() async
-  // {
-  //   try {
-  //     var response =
-  //     await http.post(
-  //         Uri.parse("https://D3mk.com/manshy.php"),
-  //         body: {"token": ''}
-  //     );
-  //     print(response.body);
-  //   }catch (e){
-  //     print(e);
-  //   }
-  // }
-
-  // final FirebaseMessaging firebaseMessaging = FirebaseMessaging();
-  // firebaseMessaging.getToken().then(String token){
-  //   assert(token != null);
-  //   setState(() {
-  //     mytoken = "Push Messaging token : $token";
-  //   });
-  //   print(mytoken);
-  // }
-
   @override
   Widget build(BuildContext context) {
+    double hight = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      backgroundColor: AppColor.primaryColor,
       body: SafeArea(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
-            Text("Doctor"),
-          ],
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                height: hight/2,
+                width: width/2,
+                child: Image.asset(
+                  AppImageAsset.logoo,
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

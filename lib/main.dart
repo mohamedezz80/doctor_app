@@ -4,6 +4,7 @@ import 'package:doctor_app/core/const/bloc_observer.dart';
 import 'package:doctor_app/core/const/color.dart';
 import 'package:doctor_app/network/dio_helper.dart';
 import 'package:doctor_app/view/screen/auth/login/cubit.dart';
+import 'package:doctor_app/view/screen/auth/login/state.dart';
 import 'package:doctor_app/view/screen/splash_screen/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -52,28 +53,58 @@ Future<void> main() async
   BlocOverrides.runZoned(
         () {
       // Use cubits...
-      runApp(MyApp(appRouter: AppRouter(),));
+      runApp(const MyApp());
     },
     blocObserver: MyBlocObserver(),
-  );
-  runApp( MyApp(
-    appRouter: AppRouter(),
-  )
-
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key, required this.appRouter}) : super(key: key);
-final AppRouter appRouter;
+  const MyApp({Key? key,}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider(
       create: (context) => LoginCubit(),
-        child: const MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: SplashScreen(),
-        ),
+      child:  BlocConsumer<LoginCubit, LoginStates>(
+        listener: (context, state){},
+        builder: (context, state){
+          var cubit = LoginCubit.get(context);
+          return const MaterialApp(
+            debugShowCheckedModeBanner: false,
+            home: SplashScreen(),
+            // darkTheme: ThemeData(
+            //   scaffoldBackgroundColor: AppColor.darkColor,
+            //   backgroundColor: AppColor.thirdColor,
+            //   cardTheme: const CardTheme(color: AppColor.thirrdColor),
+            //   iconTheme: const IconThemeData(color: Colors.white),
+            //   cardColor: AppColor.darkColor,
+            //   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            //     selectedItemColor: AppColor.primaryColor,
+            //     unselectedItemColor: AppColor.secColor,
+            //     backgroundColor: AppColor.thirrdColor,
+            //   ),
+            //   primaryColor: AppColor.primaryColor,
+            // ),
+
+            // theme: ThemeData(
+            //   bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            //     selectedItemColor: AppColor.primaryColor,
+            //     unselectedItemColor: Colors.white,
+            //   ),
+            //   iconTheme: const IconThemeData(color: AppColor.primaryColor),
+            //   appBarTheme: const AppBarTheme(
+            //     color: Colors.white,
+            //     elevation: 0,
+            //     iconTheme: IconThemeData(color: AppColor.primaryColor),
+            //   ),
+            //   primaryColor: AppColor.primaryColor,
+            // ),
+            // darkTheme: dark,
+            // theme: light,
+          );
+        },
+      )
     );
   }
 }

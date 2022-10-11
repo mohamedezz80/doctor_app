@@ -19,7 +19,12 @@ class CustomButtonAuth extends StatelessWidget {
         ),
         onPressed: onPressed,
 
-        child: Text(text),
+        child: Text(
+            text,
+          style: const TextStyle(
+            fontSize: 17,
+          ),
+        ),
       ),
     );
   }

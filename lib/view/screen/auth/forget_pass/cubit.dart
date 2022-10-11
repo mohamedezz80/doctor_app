@@ -13,11 +13,12 @@ class ForgetPassCubit extends Cubit<ForgetPassStates>
 
   GlobalKey<FormState> formState = GlobalKey<FormState>();
   GlobalKey<FormState> formStateReset = GlobalKey<FormState>();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   var emailController = TextEditingController();
 
   var passwordController = TextEditingController();
-  var rePasswordController = TextEditingController();
+  var newPasswordController = TextEditingController();
 
   bool isShowPass = true;
 

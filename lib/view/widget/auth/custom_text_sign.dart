@@ -19,7 +19,7 @@ class CustomTextSign extends StatelessWidget {
           onTap: onTap,
           child: Text(
             text2,
-            style: const TextStyle(
+            style: TextStyle(
               color: AppColor.primaryColor,
               fontWeight: FontWeight.bold,
             ),

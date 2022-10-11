@@ -78,7 +78,7 @@ class _NotificationItemState extends State<NotificationItem> {
                         const Spacer(),
                         IconButton(
                           onPressed: (){},
-                          icon: const Icon(
+                          icon: Icon(
                             Icons.delete,
                             color: AppColor.primaryColor,
                             size: 30,

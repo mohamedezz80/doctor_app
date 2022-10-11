@@ -1,30 +1,26 @@
 
+
 import 'package:doctor_app/core/const/color.dart';
 import 'package:doctor_app/core/const/image_asset.dart';
-import 'package:doctor_app/core/const/token.dart';
-import 'package:doctor_app/view/screen/auth/forget_pass/cubit.dart';
-import 'package:doctor_app/view/screen/auth/forget_pass/state.dart';
-import 'package:doctor_app/view/screen/auth/forget_pass/virfycode_forget.dart';
 import 'package:doctor_app/view/screen/auth/login/cubit.dart';
 import 'package:doctor_app/view/screen/auth/login/login_screen.dart';
 import 'package:doctor_app/view/screen/auth/login/state.dart';
 import 'package:doctor_app/view/screen/auth/success_sign/success_sign.dart';
 import 'package:doctor_app/view/widget/auth/custom_button.dart';
-import 'package:doctor_app/view/widget/auth/logo.dart';
 import 'package:doctor_app/view/widget/navigate_finish.dart';
 import 'package:doctor_app/view/widget/navigate_to.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
-class ForgetPassword extends StatefulWidget {
-  const ForgetPassword({Key? key}) : super(key: key);
+class ChangePassword extends StatefulWidget {
+  const ChangePassword({Key? key}) : super(key: key);
 
   @override
-  State<ForgetPassword> createState() => _ForgetPasswordState();
+  State<ChangePassword> createState() => _ChangePasswordState();
 }
 
-class _ForgetPasswordState extends State<ForgetPassword> {
+class _ChangePasswordState extends State<ChangePassword> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -82,50 +78,68 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                     child: Column(
                                       children: [
                                         SizedBox(
-                                          height: hight/ 30,
+                                          height: hight/ 50,
+                                        ),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            IconButton(
+                                                onPressed: (){
+                                                  Navigator.pop(context);
+                                                },
+                                                icon: Icon(
+                                                  Icons.arrow_back_ios,
+                                                color: AppColor.primaryColor,
+                                                  size: 30,
+                                                ),
+                                            ),
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          width: hight/40,
                                         ),
                                         const Text(
-                                          "Forgot your password ?",
+                                          "Change your password ?",
                                           style: TextStyle(
                                             fontWeight: FontWeight.bold,
                                             color: Colors.black,
-                                            fontSize: 17,
+                                            fontSize: 15,
                                           ),
                                         ),
                                         SizedBox(
                                           height: hight / 20,
                                         ),
                                         Material(
-                                          elevation: 3,
-                                          shadowColor: Colors.black87,
+                                          elevation: 5,
+                                          shadowColor: AppColor.primaryColor,
                                           borderRadius: BorderRadius.circular(50),
                                           child: TextFormField(
-                                            controller: cubit.phoneForgetController,
+                                            controller: cubit.newPasswordController,
                                             keyboardType: TextInputType.phone,
-                                            decoration:   InputDecoration(
-                                                hintText: '01155555555',
+                                            decoration:  InputDecoration(
+                                                hintText: '123123123',
                                                 fillColor: Colors.white,
                                                 filled: true,
-                                                hintStyle: const TextStyle(
+                                                hintStyle: TextStyle(
                                                   color: Colors.grey,
                                                 ),
-                                                labelStyle: const TextStyle(
+                                                labelStyle: TextStyle(
                                                   color: Colors.black54,
                                                   fontWeight: FontWeight.w300,
                                                 ),
-                                                label: const Text(
-                                                  "Phone",
+                                                label: Text(
+                                                  "New Password",
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.bold,
                                                   ),
                                                 ),
                                                 floatingLabelBehavior: FloatingLabelBehavior.always,
                                                 focusColor: AppColor.primaryColor,
-                                                border: const OutlineInputBorder(
+                                                border: OutlineInputBorder(
                                                   borderSide: BorderSide.none,
                                                 ),
                                                 suffixIcon: Icon(
-                                                  Icons.phone,
+                                                  Icons.visibility,
                                                   color: AppColor.primaryColor,
                                                 )),
                                           ),
@@ -135,20 +149,66 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                           height: 1,
                                         ),
                                         SizedBox(
-                                          height: hight / 15,
+                                          height: hight/ 20,
+                                        ),
+                                        Material(
+                                          elevation: 5,
+                                          shadowColor: Colors.black87,
+                                          borderRadius: BorderRadius.circular(50),
+                                          child: TextFormField(
+                                            controller: cubit.confirmNewPasswordController,
+                                            keyboardType: TextInputType.visiblePassword,
+                                            decoration:  InputDecoration(
+                                              filled: true,
+                                              fillColor: Colors.white,
+                                              hintText: '123123123',
+                                              hintStyle: TextStyle(
+                                                color: Colors.grey,
+                                              ),
+                                              floatingLabelBehavior: FloatingLabelBehavior.always,
+                                              labelStyle: TextStyle(
+                                                color: Colors.black54,
+                                                fontWeight: FontWeight.w300,
+                                              ),
+                                              label: Text(
+                                                "Password Confirm",
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                ),
+                                              ),
+                                              focusColor: AppColor.primaryColor,
+                                              suffixStyle: TextStyle(
+                                                color: AppColor.primaryColor,
+                                                backgroundColor: AppColor.primaryColor,
+                                              ),
+                                              border: OutlineInputBorder(
+                                                borderSide: BorderSide.none,
+                                              ),
+                                              suffixIcon: Icon(
+                                                Icons.visibility,
+                                                color: AppColor.primaryColor,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          color: Colors.grey,
+                                          height: 1,
+                                        ),
+                                        SizedBox(
+                                          height: hight / 20,
                                         ),
                                         Container(
                                           width: double.infinity,
                                           child: CustomButtonAuth(
-                                            text: "Forget Password",
+                                            text: "Change password",
                                             onPressed: () async
                                             {
                                               if(cubit.newPasswordController.text == cubit.confirmNewPasswordController.text){
                                                 await http.post(
                                                   Uri.parse("https://D3mk.com/manshy.php?phone${cubit.phoneController}"),
-                                                  body:
-                                                  {
-                                                    'phone_forget': cubit.phoneForgetController.text,
+                                                  body: {
+                                                    'new_password': cubit.newPasswordController.text,
                                                   },
                                                 );
                                                 setState(() {
@@ -158,9 +218,9 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                               } else{
                                                 ScaffoldMessenger.of(context).showSnackBar(
                                                     const SnackBar(
-                                                      backgroundColor: Colors.white,
+                                                        backgroundColor: Colors.white,
                                                         content: Text(
-                                                            "This is not phone number of account",
+                                                          "This is not phone number of account",
                                                           style: TextStyle(
                                                             color: Colors.black,
                                                           ),
@@ -168,33 +228,6 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                               }
                                             },
                                           ),
-                                        ),
-                                        SizedBox(
-                                          height: hight / 25,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children:  [
-                                            const Text(
-                                              'Back To ? ',
-                                              style: TextStyle(
-                                                color: Colors.grey,
-                                                fontSize: 12,
-                                              ),
-                                            ),
-                                            InkWell(
-                                              onTap: (){
-                                                navigateTo(context, Login());
-                                              },
-                                              child:  Text(
-                                                'Login',
-                                                style: TextStyle(
-                                                  color: AppColor.primaryColor,
-                                                  fontWeight: FontWeight.w900,
-                                                ),
-                                              ),
-                                            ),
-                                          ],
                                         ),
                                       ],
                                     ),

@@ -35,28 +35,28 @@ class CustomTextForm extends StatelessWidget {
       obscureText == null || obscureText == false ? false : true,
       decoration:  InputDecoration(
           floatingLabelBehavior: FloatingLabelBehavior.always,
-          label: Container(
-            margin: const EdgeInsets.symmetric(horizontal: 7.0),
-            child: Text(labelText),
+          label: Text(
+            labelText,
+            style: TextStyle(
+              color: AppColor.primaryColor,
+            ),
           ),
           hintText: hintText,
           hintStyle: const TextStyle(
             fontSize: 14,
+            color: Colors.grey,
           ),
           suffixIcon: InkWell(
             onTap: onTapIcon,
-            child: Icon(iconData),
+            child: Icon(iconData, color: AppColor.primaryColor,),
           ),
           focusColor: AppColor.primaryColor,
           contentPadding: const EdgeInsets.symmetric(
             vertical: 8 ,
             horizontal: 33,
           ),
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30),
-            borderSide: const BorderSide(
-              color: AppColor.primaryColor,
-            ),
+          border: const OutlineInputBorder(
+            borderSide:  BorderSide.none,
           )
       ),
     );

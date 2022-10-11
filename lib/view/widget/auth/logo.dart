@@ -1,3 +1,4 @@
+import 'package:doctor_app/core/const/color.dart';
 import 'package:doctor_app/core/const/image_asset.dart';
 import 'package:flutter/material.dart';
 
@@ -7,11 +8,11 @@ class Logo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      radius: 70,
-      backgroundColor: Colors.red,
+      radius: 60,
+      backgroundColor: AppColor.backGround,
       child: ClipOval(
         child: Image.asset(
-          AppImageAsset.logo,
+          AppImageAsset.doctorphoto,
         ),
       ),
     );

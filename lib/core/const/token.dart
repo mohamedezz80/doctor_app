@@ -20,8 +20,16 @@ class Token {
     await FirebaseMessaging.instance.getToken().then((token) => print(token));
   }
 }
-TextEditingController passwordController = TextEditingController();
-TextEditingController phoneController = TextEditingController();
+IconData suffix = Icons.visibility;
+bool isShowPass = true;
+showPass()
+{
+  isShowPass = !isShowPass;
+  suffix = isShowPass? Icons.visibility : Icons.visibility_off;
+}
+
+
+
 class Session
 {
   // TextEditingController passwordController = TextEditingController();

@@ -38,7 +38,6 @@ class BookingModel {
   String? time;
   String? availability;
 
-
   BookingModel({this.id, this.date, this.time, this.availability});
 
   BookingModel.fromJson(Map<String, dynamic> json) {
@@ -57,3 +56,28 @@ class BookingModel {
     return data;
   }
 }
+
+class LoginModel {
+  String? id;
+  String? name;
+  String? age;
+
+  LoginModel({this.id, this.name, this.age});
+
+  LoginModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'] ;
+    name = json['name'];
+    age = json['age'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data =  <String, dynamic>{};
+    data['id'] = id;
+    data['date'] = name;
+    data['time'] = age;
+    return data;
+  }
+}
+
+
+
