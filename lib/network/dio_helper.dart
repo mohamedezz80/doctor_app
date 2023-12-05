@@ -15,6 +15,23 @@ class DioHelper
       ),
     );
   }
+  static Dio dio2 = Dio();
+
+  static void init2() {
+    dio2 = Dio(
+      BaseOptions(
+        baseUrl: 'https://d3mk.com',
+        receiveDataWhenStatusError: true,
+      ),
+    );
+  }
+  static Future<Response> getSchaduleData(
+      {required String url, required Map<String, dynamic> query}) async {
+    return await dio.get(
+      url,
+      queryParameters: query,
+    );
+  }
 
   static Future<Response<dynamic>> getData(
       {

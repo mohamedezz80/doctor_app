@@ -1,4 +1,6 @@
 
+import 'dart:convert';
+
 import 'package:doctor_app/core/const/color.dart';
 import 'package:doctor_app/core/const/image_asset.dart';
 import 'package:doctor_app/view/screen/auth/login/cubit.dart';
@@ -93,7 +95,7 @@ class _SignUpState extends State<SignUp> {
                                           height: hight / 25,
                                         ),
                                         Material(
-                                          elevation: 5,
+                                          elevation: 2,
                                           shadowColor: Colors.black87,
                                           borderRadius: BorderRadius.circular(50),
                                           child: TextFormField(
@@ -135,7 +137,7 @@ class _SignUpState extends State<SignUp> {
                                           height: hight/ 25,
                                         ),
                                         Material(
-                                          elevation: 5,
+                                          elevation: 2,
                                           shadowColor: Colors.black87,
                                           borderRadius: BorderRadius.circular(50),
                                           child: TextFormField(
@@ -177,7 +179,7 @@ class _SignUpState extends State<SignUp> {
                                           height: hight/ 25,
                                         ),
                                         Material(
-                                          elevation: 5,
+                                          elevation: 2,
                                           shadowColor: Colors.black87,
                                           borderRadius: BorderRadius.circular(50),
                                           child: TextFormField(
@@ -187,10 +189,10 @@ class _SignUpState extends State<SignUp> {
                                                 hintText: '35',
                                                 fillColor: Colors.white,
                                                 filled: true,
-                                                hintStyle: TextStyle(
+                                                hintStyle: const TextStyle(
                                                   color: Colors.grey,
                                                 ),
-                                                labelStyle: TextStyle(
+                                                labelStyle: const TextStyle(
                                                   color: Colors.black54,
                                                   fontWeight: FontWeight.w300,
                                                 ),
@@ -219,7 +221,7 @@ class _SignUpState extends State<SignUp> {
                                           height: hight/ 25,
                                         ),
                                         Material(
-                                          elevation: 5,
+                                          elevation: 2,
                                           shadowColor: Colors.black87,
                                           borderRadius: BorderRadius.circular(50),
                                           child: TextFormField(
@@ -229,14 +231,14 @@ class _SignUpState extends State<SignUp> {
                                                 hintText: '01155555555',
                                                 fillColor: Colors.white,
                                                 filled: true,
-                                                hintStyle: TextStyle(
+                                                hintStyle: const TextStyle(
                                                   color: Colors.grey,
                                                 ),
-                                                labelStyle: TextStyle(
+                                                labelStyle: const TextStyle(
                                                   color: Colors.black54,
                                                   fontWeight: FontWeight.w300,
                                                 ),
-                                                label: Text(
+                                                label: const Text(
                                                   "Phone",
                                                   style: TextStyle(
                                                     fontWeight: FontWeight.bold,
@@ -261,7 +263,7 @@ class _SignUpState extends State<SignUp> {
                                           height: hight/ 25,
                                         ),
                                         Material(
-                                          elevation: 5,
+                                          elevation: 2,
                                           shadowColor: Colors.black87,
                                           borderRadius: BorderRadius.circular(50),
                                           child: TextFormField(
@@ -271,7 +273,7 @@ class _SignUpState extends State<SignUp> {
                                               filled: true,
                                               fillColor: Colors.white,
                                               hintText: '123123123',
-                                              hintStyle: TextStyle(
+                                              hintStyle: const TextStyle(
                                                 color: Colors.grey,
                                               ),
                                               floatingLabelBehavior: FloatingLabelBehavior.always,
@@ -290,7 +292,7 @@ class _SignUpState extends State<SignUp> {
                                                 color: AppColor.primaryColor,
                                                 backgroundColor: AppColor.primaryColor,
                                               ),
-                                              border: OutlineInputBorder(
+                                              border: const OutlineInputBorder(
                                                 borderSide: BorderSide.none,
                                               ),
                                               suffixIcon: Icon(
@@ -330,6 +332,11 @@ class _SignUpState extends State<SignUp> {
                                                           'password': cubit.passwordController.text,
                                                         },
                                                       );
+                                                      SharedPreferences pref =
+                                                      await SharedPreferences.getInstance();
+                                                      pref.setString('id',jsonDecode(response.body)['info']['id'] );
+                                                      pref.setString('username',jsonDecode(response.body)['info']['name'] );
+                                                      pref.setInt('age',jsonDecode(response.body)['info']['age'] );
                                                       print(response.body);
                                                       print(cubit.phoneController.text);
                                                       print(cubit.passwordController.text);

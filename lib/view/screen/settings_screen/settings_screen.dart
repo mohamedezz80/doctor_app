@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:doctor_app/core/const/color.dart';
 import 'package:doctor_app/core/const/http.dart';
@@ -12,6 +14,7 @@ import 'package:doctor_app/view/widget/navigate_to.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 
 
@@ -39,7 +42,12 @@ class _SettingsState extends State<Settings> {
   //late bool val;
 
 
+  var myMarkers = HashSet<Marker>();
 
+  static const CameraPosition _kGooglePlex = CameraPosition(
+    target: LatLng(29.97560441931587, 31.23482477331727),
+    zoom: 18.4746,
+  );
 
 
   @override
@@ -310,6 +318,74 @@ class _SettingsState extends State<Settings> {
                                       ),
                                       SizedBox(
                                         height: hight/40,
+                                      ),
+                                      Column(
+                                        crossAxisAlignment: CrossAxisAlignment.center,
+                                        children: [
+                                          const Text(
+                                            "Map",
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 20,
+                                              color: Colors.black54,
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height:
+                                            MediaQuery.of(context).size.height / 80,
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsets.symmetric(
+                                                horizontal: 15),
+                                            child: Container(
+                                              height: MediaQuery.of(context).size.height /
+                                                  3,
+                                              decoration: const BoxDecoration(
+                                                borderRadius: BorderRadius.only(
+                                                  topLeft: Radius.circular(50),
+                                                ),
+                                              ),
+                                              child: ClipRRect(
+                                                borderRadius: BorderRadius.circular(10),
+                                                child: GoogleMap(
+                                                  scrollGesturesEnabled: true,
+                                                  markers: myMarkers,
+                                                  initialCameraPosition: _kGooglePlex,
+                                                  zoomControlsEnabled: true,
+                                                  //mapType: MapType.terrain,
+                                                  onMapCreated: (GoogleMapController
+                                                  googleMapController) {
+                                                    setState(() {
+                                                      // if(googleMapController==null){
+                                                      //   return  CircularProgressIndicator();
+                                                      // }else{
+                                                      //
+                                                      // }
+                                                      myMarkers.add(
+                                                        const Marker(
+                                                          markerId: MarkerId('1'),
+                                                          position: LatLng(
+                                                              29.97560441931587,
+                                                              31.23482477331727),
+                                                          infoWindow: InfoWindow(
+                                                            title:
+                                                            'اباتشي للاستثمار والتنمية العمرانية',
+                                                          ),
+                                                        ),
+                                                      );
+                                                    });
+                                                  },
+                                                  //   mapType: MapType.hybrid,
+                                                   myLocationButtonEnabled: true,
+                                                ),
+                                              ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            height:
+                                            MediaQuery.of(context).size.height / 40,
+                                          ),
+                                        ],
                                       ),
                                     ],
                                   ),

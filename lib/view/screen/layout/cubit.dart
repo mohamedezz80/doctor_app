@@ -9,28 +9,42 @@ import 'package:doctor_app/view/screen/on_boarding/on_boarding.dart';
 import 'package:doctor_app/view/screen/settings_screen/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LayoutCubit extends Cubit<LayOutStates>
 {
   LayoutCubit() : super (LayOutInitialState());
   static LayoutCubit get(context) => BlocProvider.of<LayoutCubit>(context);
 
-  int currentIndex = 2;
 
-  List<Widget> bottomScreen =
-      [
-        const Person(),
-        const Booking(),
-        const Home(),
-        const NotificationScreen(),
-        Settings(),
-      ];
 
-  void changeBottom(int index)
+  var sharedName;
+  SharedPreferences? prefName;
+  Future<String> sharedPrefName() async
   {
-    currentIndex = index;
-    emit(LayOutChangeBottomNavState());
+    prefName = await SharedPreferences.getInstance();
+    sharedName = prefName!.getString('username');
+    return sharedName.toString();
+
   }
+
+
+  // int currentIndex = 2;
+  //
+  // List<Widget> bottomScreen =
+  //     [
+  //       const Person(),
+  //       const Booking(),
+  //       const Home(),
+  //       const NotificationScreen(),
+  //       Settings(),
+  //     ];
+  //
+  // void changeBottom(int index)
+  // {
+  //   currentIndex = index;
+  //   emit(LayOutChangeBottomNavState());
+  // }
 
 
 

@@ -21,3 +21,7 @@ class LoginErrorState extends LoginStates
   LoginErrorState(this.error);
 }
 class IsDark extends LoginStates{}
+class ScheduleDataLoaded extends LoginStates {}
+class LayOutChangeBottomNavState extends LoginStates{}
+class NameLoaded extends LoginStates{}
+class AgeLoaded extends LoginStates{}

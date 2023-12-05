@@ -95,7 +95,8 @@ class _BookingState extends State<Booking> {
                       DraggableScrollableSheet(
                         initialChildSize: 0.7,
                         minChildSize: 0.5,
-                        builder: (BuildContext context, ScrollController controller){
+                        builder: (BuildContext context, ScrollController controller)
+                        {
                           return Container(
                             decoration: const BoxDecoration(
                               color: Colors.white,
@@ -281,7 +282,7 @@ class _BookingState extends State<Booking> {
                                             print('Error ${snapshot.error}');
                                             return const Center(
                                               child: Text(
-                                                  'لست متصل بالانترنت',
+                                                'لست متصل بالانترنت',
                                                 style: TextStyle(
                                                   fontSize: 16,
                                                 ),
@@ -292,7 +293,7 @@ class _BookingState extends State<Booking> {
                                             return RefreshIndicator(
                                               child: GridView.count(
                                                 shrinkWrap: true,
-                                                //physics: const NeverScrollableScrollPhysics(),
+                                                physics: const NeverScrollableScrollPhysics(),
                                                 crossAxisCount: 4,
                                                 crossAxisSpacing: 7,
                                                 mainAxisSpacing: 1,
@@ -319,10 +320,10 @@ class _BookingState extends State<Booking> {
                                                             const SnackBar(
                                                               content: Text(
                                                                 "هذا الوقت ليس متاح",
-                                                              style: TextStyle(
-                                                                fontSize: 16,
+                                                                style: TextStyle(
+                                                                  fontSize: 16,
+                                                                ),
                                                               ),
-                                                            ),
                                                             ));
                                                       }
                                                     },
@@ -411,6 +412,7 @@ class _BookingState extends State<Booking> {
                                                               ? FittedBox(
                                                             clipBehavior: Clip.antiAliasWithSaveLayer,
                                                             child: Container(
+
                                                               height: hight/30,
                                                               padding: const EdgeInsets.symmetric(horizontal: 3,),
                                                               decoration: BoxDecoration(
@@ -660,7 +662,7 @@ class _BookingState extends State<Booking> {
                                                   },
                                                 ),
                                                 const Text(
-                                                    'Cash',
+                                                  'Cash',
                                                   style: TextStyle(
                                                     fontSize: 17,
                                                     fontWeight: FontWeight.bold,
@@ -679,7 +681,7 @@ class _BookingState extends State<Booking> {
                                                   },
                                                 ),
                                                 const Text(
-                                                    'Visa',
+                                                  'Visa',
                                                   style: TextStyle(
                                                     fontSize: 17,
                                                     fontWeight: FontWeight.bold,
@@ -698,7 +700,7 @@ class _BookingState extends State<Booking> {
                                                   },
                                                 ),
                                                 const Text(
-                                                    'Banking',
+                                                  'Banking',
                                                   style: TextStyle(
                                                     fontSize: 17,
                                                     fontWeight: FontWeight.bold,
@@ -754,6 +756,9 @@ class _BookingState extends State<Booking> {
 
                                           },
                                         ),
+                                      ),
+                                      SizedBox(
+                                        height: MediaQuery.of(context).size.height / 35,
                                       ),
                                     ],
                                   ),

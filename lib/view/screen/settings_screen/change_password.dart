@@ -110,7 +110,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                           height: hight / 20,
                                         ),
                                         Material(
-                                          elevation: 5,
+                                          elevation: 2,
                                           shadowColor: AppColor.primaryColor,
                                           borderRadius: BorderRadius.circular(50),
                                           child: TextFormField(
@@ -152,7 +152,7 @@ class _ChangePasswordState extends State<ChangePassword> {
                                           height: hight/ 20,
                                         ),
                                         Material(
-                                          elevation: 5,
+                                          elevation: 2,
                                           shadowColor: Colors.black87,
                                           borderRadius: BorderRadius.circular(50),
                                           child: TextFormField(

@@ -197,7 +197,7 @@ class _PersonState extends State<Person> {
                                                 SizedBox(
                                                   height: hight/150,
                                                 ),
-                                                Container(
+                                                state is NameLoaded ?Container(
                                                   width: width/2.5,
                                                   child:  Text(
                                                     cubit.sharedName.toString(),
@@ -207,7 +207,7 @@ class _PersonState extends State<Person> {
                                                       color: Colors.black87,
                                                     ),
                                                   ),
-                                                ),
+                                                ):const Text('Loading...'),
                                               ],
                                             ),
                                             //Spacer(),
@@ -229,14 +229,14 @@ class _PersonState extends State<Person> {
                                                 SizedBox(
                                                   height: hight/150,
                                                 ),
-                                                 Text(
+                                                state is NameLoaded ?Text(
                                                   cubit.sharedAge.toString(),
                                                   style: const TextStyle(
                                                     fontWeight: FontWeight.w500,
                                                     fontSize: 16,
                                                     color: Colors.black87,
                                                   ),
-                                                ),
+                                                ):const Text('Loading...'),
                                               ],
                                             ),
                                           ],
@@ -312,77 +312,82 @@ class _PersonState extends State<Person> {
                                         SizedBox(
                                           height: hight/35,
                                         ),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: const [
-                                            Text(
-                                              "number of visits : 0",
-                                              style: TextStyle(
-                                                fontWeight: FontWeight.w500,
-                                                fontSize: 14,
-                                                color: Colors.black54,
+                                        Column(
+                                          children:
+                                          [
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              children: const [
+                                                Text(
+                                                  "number of visits : 0",
+                                                  style: TextStyle(
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 14,
+                                                    color: Colors.black54,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            SizedBox(
+                                              height: hight/70,
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.symmetric(
+                                                horizontal: 10,
+                                              ),
+                                              child: Card(
+                                                color: Colors.white,
+                                                elevation: 3,
+                                                shadowColor: Colors.black87,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.circular(20),
+                                                ),
+                                                child: Container(
+                                                  padding: const EdgeInsets.all(5),
+                                                  child: ListTile(
+                                                    leading: CircleAvatar(
+                                                      radius: 30,
+                                                      backgroundColor: AppColor.backGround,
+                                                      child: ClipOval(
+                                                        child: Icon(
+                                                          Icons.menu_book,
+                                                          color: AppColor.primaryColor,
+                                                          size: 37,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                    title: Row(
+                                                      children: [
+                                                        const Text(
+                                                          'Available',
+                                                          style: TextStyle(
+                                                            color: Colors.black87,
+                                                            fontWeight: FontWeight.w400,
+                                                            fontSize: 14,
+                                                          ),
+                                                        ),
+                                                        SizedBox(
+                                                          width: width/50,
+                                                        ),
+                                                        const CircleAvatar(
+                                                          radius: 5,
+                                                          backgroundColor: Colors.red,
+                                                        ),
+                                                      ],
+                                                    ),
+                                                    subtitle: const Text(
+                                                      '25-10-2022  8:15 pm',
+                                                      style: TextStyle(
+                                                        color: Colors.grey,
+                                                        fontWeight: FontWeight.w400,
+                                                        fontSize: 12,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
                                               ),
                                             ),
                                           ],
-                                        ),
-                                        SizedBox(
-                                          height: hight/70,
-                                        ),
-                                        Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 10,
-                                          ),
-                                          child: Card(
-                                            color: Colors.white,
-                                            elevation: 3,
-                                            shadowColor: Colors.black87,
-                                            shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(20),
-                                            ),
-                                            child: Container(
-                                              padding: const EdgeInsets.all(5),
-                                              child: ListTile(
-                                                leading: CircleAvatar(
-                                                  radius: 30,
-                                                  backgroundColor: AppColor.backGround,
-                                                  child: ClipOval(
-                                                    child: Icon(
-                                                      Icons.menu_book,
-                                                      color: AppColor.primaryColor,
-                                                      size: 37,
-                                                    ),
-                                                  ),
-                                                ),
-                                                title: Row(
-                                                  children: [
-                                                    const Text(
-                                                      'Available',
-                                                      style: TextStyle(
-                                                        color: Colors.black87,
-                                                        fontWeight: FontWeight.w400,
-                                                        fontSize: 14,
-                                                      ),
-                                                    ),
-                                                    SizedBox(
-                                                      width: width/50,
-                                                    ),
-                                                    const CircleAvatar(
-                                                      radius: 5,
-                                                      backgroundColor: Colors.red,
-                                                    ),
-                                                  ],
-                                                ),
-                                                subtitle: const Text(
-                                                  '25-10-2022  8:15 pm',
-                                                  style: TextStyle(
-                                                    color: Colors.grey,
-                                                    fontWeight: FontWeight.w400,
-                                                    fontSize: 12,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ),
                                         ),
                                       ],
                                     ),

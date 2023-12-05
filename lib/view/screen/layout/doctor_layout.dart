@@ -2,6 +2,8 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:doctor_app/core/const/color.dart';
 import 'package:doctor_app/core/const/http.dart';
+import 'package:doctor_app/view/screen/auth/login/cubit.dart';
+import 'package:doctor_app/view/screen/auth/login/state.dart';
 import 'package:doctor_app/view/screen/layout/cubit.dart';
 import 'package:doctor_app/view/screen/layout/state.dart';
 import 'package:doctor_app/view/widget/auth/is_logined.dart';
@@ -33,19 +35,29 @@ class _DoctorLayOutState extends State<DoctorLayOut> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LayoutCubit() ,
-      child: BlocConsumer<LayoutCubit,LayOutStates>(
+      create: (context) => LoginCubit() ,
+      child: BlocConsumer<LoginCubit,LoginStates>(
         listener: (context, state) {},
         builder: (context, state) {
-          var cubit = LayoutCubit.get(context);
+          LoginCubit cubit = LoginCubit.get(context);
+          var size = MediaQuery.of(context).size;
+          cubit.sharedPrefName();
+          // LoginCubit cubit = LoginCubit.get(context);
           return Scaffold(
             appBar: AppBar(
               backgroundColor: AppColor.primaryColor,
               elevation: 0,
-              title: const Text(
-                  'welcome : Mohamed Ahmed',
-                style: TextStyle(
-                  fontSize: 16,
+              title:  Container(
+                padding: EdgeInsets.all(9),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  color: Color.fromARGB(255, 95, 153, 182),
+                ),
+                child: Text(
+                    'welcome : ${cubit.sharedName.toString()}',
+                  style: const TextStyle(
+                    fontSize: 16,
+                  ),
                 ),
               ),
             ),

@@ -3,6 +3,7 @@ import 'package:doctor_app/core/const/color.dart';
 import 'package:doctor_app/core/const/image_asset.dart';
 import 'package:doctor_app/view/screen/auth/login/cubit.dart';
 import 'package:doctor_app/view/screen/auth/login/login_screen.dart';
+import 'package:doctor_app/view/screen/layout/doctor_layout.dart';
 import 'package:doctor_app/view/screen/on_boarding/contant.dart';
 import 'package:doctor_app/view/widget/navigate_to.dart';
 import 'package:flutter/cupertino.dart';

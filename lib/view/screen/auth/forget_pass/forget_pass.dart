@@ -96,7 +96,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                                           height: hight / 20,
                                         ),
                                         Material(
-                                          elevation: 3,
+                                          elevation: 2,
                                           shadowColor: Colors.black87,
                                           borderRadius: BorderRadius.circular(50),
                                           child: TextFormField(

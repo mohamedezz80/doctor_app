@@ -132,7 +132,7 @@ class _LoginState extends State<Login> {
                                           height: hight / 20,
                                         ),
                                         Material(
-                                          elevation: 5,
+                                          elevation: 2,
                                           shadowColor: Colors.black87,
                                           borderRadius: BorderRadius.circular(50),
                                           child: TextFormField(
@@ -174,7 +174,7 @@ class _LoginState extends State<Login> {
                                           height: hight/ 20,
                                         ),
                                         Material(
-                                          elevation: 5,
+                                          elevation: 2,
                                           shadowColor: Colors.black87,
                                           borderRadius: BorderRadius.circular(50),
                                           child: TextFormField(
@@ -292,14 +292,25 @@ class _LoginState extends State<Login> {
                                                                       .toString()
                                                               );
                                                               navigateAndFinish(context, const DoctorLayOut());
-                                                            } else {
-                                                              ScaffoldMessenger
-                                                                  .of(context)
-                                                                  .showSnackBar(
-                                                                  const SnackBar(
-                                                                      content: Text(
+                                                            } else{
+                                                              showDialog(
+                                                                  context: context,
+                                                                  builder: (context) => AlertDialog(
+                                                                    actions: [
+                                                                      TextButton(
+                                                                          onPressed: (){
+                                                                            Navigator.of(context).pop();
+                                                                          },
+                                                                          child: const Text('close'),
+                                                                      ),
+                                                                    ],
+                                                                    title: const Text('Alert'),
+                                                                      contentPadding: const EdgeInsets.all(20.0),
+                                                                      content: const Text(
 
-                                                                          "The phone number and password is not correct")));
+                                                                          "The phone number and password is not correct"),
+                                                                  ),
+                                                              );
                                                             }
                                                           }
                                                           );

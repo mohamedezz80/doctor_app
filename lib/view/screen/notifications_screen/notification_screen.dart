@@ -295,7 +295,7 @@ class _DataListState extends State<DataList> {
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: Container(
-                  height: MediaQuery.of(context).size.height/6.5,
+                  height: MediaQuery.of(context).size.height/5.7,
                   width: double.infinity,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
